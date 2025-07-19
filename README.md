@@ -34,6 +34,8 @@ An efficient and modern **Expense Management System** designed with a responsive
 - Python 3.9+
 - `pip` (Python package installer)
 
+### DEPLOYED ON STREAMLIT CLOUD
+``` https://expensemanagement.streamlit.app/
 ### Installation
 
 1. **Clone the repo**  
