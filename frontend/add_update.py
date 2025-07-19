@@ -2,7 +2,7 @@ import streamlit as st
 import datetime
 import requests
 
-API_URL = "http://localhost:8000"
+API_URL = "https://expensemanagement.streamlit.app/"
 
 def add_update_tab():
     st.title("📝 Add / Update Daily Expenses")
