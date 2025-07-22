@@ -10,7 +10,7 @@ def add_update_tab():
 
     selected_date = st.date_input(
         "Enter Date:",
-        datetime.date.today(),
+        datetime.date(2024, 8, 1),
         key="start_date_add_update",
     ).strftime("%Y-%m-%d")
 
@@ -26,7 +26,8 @@ def add_update_tab():
             st.warning("No existing expenses found for this date.")
     except Exception as e:
         st.error(f"🔌 Network error while fetching expenses: {e}🔌")
-        categories = ["Rent", "Food", "Shopping", "Entertainment", "Other"]
+    
+    categories = ["Rent", "Food", "Shopping", "Entertainment", "Other"]
 
     with st.form(key="expense_form"):
         st.markdown("###  Enter Expenses")
