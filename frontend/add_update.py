@@ -22,7 +22,6 @@ def add_update_tab():
                 existing_expenses = response.json()
             except ValueError:
                 st.error("⚠️ Response could not be decoded as JSON.⚠️")
-                st.text(response.text)  # Show raw response for debugging
         else:
             st.warning("No existing expenses found for this date.")
     except Exception as e:
