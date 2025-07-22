@@ -5,30 +5,31 @@ import requests
 API_URL = "https://expensemanagement.streamlit.app/"
 
 def add_update_tab():
-    st.title("📝 Add / Update Daily Expenses")
+    st.title(" Add and Update Daily Expenses")
 
     selected_date = st.date_input(
         "Enter Date:",
-        datetime.date(2024, 8, 1),
+        datetime.date.today(),
         key="start_date_add_update",
     ).strftime("%Y-%m-%d")
 
-    # Fetch existing expenses
-    response = requests.get(f"{API_URL}/expenses/{selected_date}")
-    existing_expenses = []
-
-    if response.status_code == 200 and response.text.strip():
-        try:
-            existing_expenses = response.json()
-        except ValueError:
-            st.error("⚠️ Response could not be decoded as JSON.")
-    else:
-        st.warning("No existing expenses found for this date.")
-
-    categories = ["Rent", "Food", "Shopping", "Entertainment", "Other"]
+    try:
+        # response = requests.get(f"{API_URL}/expenses/{selected_date}")
+        response = requests.get(f"{API_URL}")
+        existing_expenses = []
+        if response.status_code == 200 and response.text.strip():
+            try:
+                existing_expenses = response.json()
+            except ValueError:
+                st.error("⚠️ Response could not be decoded as JSON.")
+        else:
+            st.warning("No existing expenses found for this date.")
+    except Exception as e:
+        st.error(f"🔌 Network error while fetching expenses: {e}")
+        categories = ["Rent", "Food", "Shopping", "Entertainment", "Other"]
 
     with st.form(key="expense_form"):
-        st.markdown("### 💵 Enter Expenses")
+        st.markdown("###  Enter Expenses")
 
         if existing_expenses:
             st.markdown("#### 📌 Existing Expenses")
@@ -77,11 +78,11 @@ def add_update_tab():
                     "notes": notes_input
                 })
 
-        submit_button = st.form_submit_button("💾 Submit")
+        submit_button = st.form_submit_button("Submit💾")
 
         if submit_button:
             if not expenses:
-                st.warning("⚠️ Please enter at least one valid expense.")
+                st.warning("⚠️ Please enter at least one valid expense.⚠️")
                 return
 
             payload = {
@@ -92,8 +93,8 @@ def add_update_tab():
             try:
                 update_response = requests.post(f"{API_URL}/expenses/{selected_date}", json=payload)
                 if update_response.status_code == 200:
-                    st.success("✅ Expenses updated successfully.")
+                    st.success("✅ Expenses updated successfully. ✅")
                 else:
                     st.error(f"❌ Failed to update expenses. Status: {update_response.status_code}")
             except Exception as e:
-                st.error(f"🔌 Network error: {e}")
+                st.error(f"🔌 Network error: {e} 🔌")
