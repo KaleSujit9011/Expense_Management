@@ -27,15 +27,10 @@ An efficient and modern **Expense Management System** designed with a responsive
 ---
 Project Structure
 Expense_Management/main
-
-├── database/  
-
-├── frontend/
-
-├── backend/             
-
-├── tests/                
-
+├── database
+├── frontend
+├── backend             
+├── tests               
 ├── requirements.txt     
 └── README.md            
 ---
