@@ -25,14 +25,23 @@ An efficient and modern **Expense Management System** designed with a responsive
 | Language  | Python          |
 
 ---
-Project Structure
-Expense_Management/main
-├── database
-├── frontend
-├── backend             
-├── tests               
-├── requirements.txt     
-└── README.md            
+  Project Structure
+Expense_Management/main/
+├── database/                  
+├── frontend/                  
+│   ├── app.py                 
+│   ├── add_update.py          
+│   ├── analytics_by_categories.py  
+│   └── analytics_by_month.py       
+├── backend/                 
+│   ├── db_helper.py           
+│   ├── logging_setup.py       
+│   └── server.py              
+├── tests/
+│   ├── backend/
+│   │   └── conftest.py        
+├── requirements.txt           
+└── README.md                  
 ---
 ##  Getting Started
 
