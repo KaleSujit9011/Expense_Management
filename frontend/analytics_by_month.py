@@ -3,7 +3,7 @@ import datetime
 import requests
 import pandas as pd
 
-API_URL = "https://expensemanagement.streamlit.app/"
+API_URL = "http://localhost:8000"
 
 def analytics_by_month_tab():
     st.title("📆 Monthly Expense Analysis")
